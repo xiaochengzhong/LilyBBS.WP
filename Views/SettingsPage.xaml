@@ -58,18 +58,14 @@
 								   HorizontalAlignment="Center"
 								   Style="{StaticResource PhoneTextTitle2Style}"
 								   Margin="{StaticResource PhoneTouchTargetLargeOverhang}" />
-						<TextBlock Text="版本 1.2"
+						<TextBlock Text="版本 1.2.1"
 								   HorizontalAlignment="Center"
 								   Style="{StaticResource PhoneTextSubtleStyle}"
 								   Margin="{StaticResource PhoneTouchTargetOverhang}"/>
-						<HyperlinkButton Content="© rox"
-										 Margin="0,24,0,0"
-										 NavigateUri="http://bbs.nju.edu.cn/bbsqry?userid=rox"
-										 TargetName="_blank"/>
-						<HyperlinkButton Content="@roxonx"
-										 Margin="0,12,0,0" 
-										 NavigateUri="http://weibo.cn/srox"
-										 TargetName="_blank"/>
+                        <TextBlock Text="@rox &amp; @cplusplus"
+                                   HorizontalAlignment="Center"
+								   Margin="0,24,0,0"
+                                   />
 					</StackPanel>
 				</Grid>
 			</controls:PivotItem>

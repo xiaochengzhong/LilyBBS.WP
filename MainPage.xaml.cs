@@ -53,6 +53,8 @@ namespace LilyBBS
 		private void LoadFavoriteBoardList()
 		{
 			Settings settings = app.Resources["Settings"] as Settings;
+            List<String> boardList = BoardManager.GetBoardList();
+            SearchTextBox.ItemsSource = boardList;
 			List<Board> favBrd = new List<Board>();
 			if (settings.FavoriteBoardList.Count > 0)
 			{
@@ -302,6 +304,27 @@ namespace LilyBBS
 			gotoBoard(h.Board);
 		}
 		#endregion
+
+        private void SearchBoardButton_Click(object sender, RoutedEventArgs e)
+        {
+            String inputText = SearchTextBox.Text;
+            String boardName = null;
+            List<String> boardList = BoardManager.GetBoardList();
+            foreach (String board in boardList)
+            {
+                if (String.Compare(inputText, board, StringComparison.OrdinalIgnoreCase) == 0)
+                    boardName = board;
+            }
+            if (boardName == null)
+            {
+                LilyToast toast = new LilyToast();
+                toast.ShowInputBoardError();
+            }
+            else
+            {
+                gotoBoard(boardName);
+            }
+        }
 
 	}
 }

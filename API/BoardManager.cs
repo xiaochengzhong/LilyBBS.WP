@@ -29,6 +29,14 @@ namespace LilyBBS.API
 			}
 		}
 
+        public static List<String> GetBoardList()
+        {
+            List<String> boardList = new List<string>();
+            foreach (var board in Instance.boards)
+                boardList.Add(board.Key);
+            return boardList;
+        }
+
 		public static BoardManager Instance
 		{
 			get

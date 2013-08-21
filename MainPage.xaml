@@ -12,16 +12,16 @@
     FontFamily="{StaticResource PhoneFontFamilyNormal}"
     FontSize="{StaticResource PhoneFontSizeNormal}"
     Foreground="{StaticResource PhoneForegroundBrush}"
-    SupportedOrientations="PortraitOrLandscape" Orientation="Portrait"
+    SupportedOrientations="Portrait" Orientation="Portrait"
     shell:SystemTray.IsVisible="True">
 
-	<phone:PhoneApplicationPage.Resources>
-	</phone:PhoneApplicationPage.Resources>
+    <phone:PhoneApplicationPage.Resources>
+    </phone:PhoneApplicationPage.Resources>
 
-	<controls:Pivot Name="Pivot" Title="{StaticResource ApplicationTitle}" 
+    <controls:Pivot Name="Pivot" Title="{StaticResource ApplicationTitle}" 
 					SelectionChanged="Pivot_SelectionChanged"
 					Loaded="Pivot_Loaded">
-		<!--
+        <!--
 		<controls:PivotItem Header="Hello">
 			<Grid>
 				<Button Name="HelloButton" Content="信春哥，无bug！"
@@ -30,265 +30,285 @@
 						Click="HelloButton_Click"/>
 			</Grid>
 		</controls:PivotItem>-->
-		<controls:PivotItem>
-			<controls:PivotItem.Header>
-				<StackPanel Orientation="Horizontal">
-					<TextBlock Text="讨论区" VerticalAlignment="Center" />
-					<Button x:Name="FavoriteBoardButton"
+        <controls:PivotItem>
+            <controls:PivotItem.Header>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock Text="讨论区" VerticalAlignment="Center" />
+                    <Button x:Name="FavoriteBoardButton"
 							BorderThickness="0"
 							Click="FavoriteBoardButton_Click">
-						<Image Source="/Images/pivotheader.favorite.png"/>
-					</Button>
-					<Button x:Name="AllBoardButton"
+                        <Image Source="/Images/pivotheader.favorite.png"/>
+                    </Button>
+                    <Button x:Name="AllBoardButton"
 							BorderThickness="0"
 							Click="AllBoardButton_Click">
-						<Image Source="/Images/pivotheader.all.png"/>
-					</Button>
-				</StackPanel>
-			</controls:PivotItem.Header>
-			<Grid>
-				<Grid x:Name="FavoriteBoardGrid">
-					<Grid.RowDefinitions>
-						<RowDefinition Height="*"/>
-					</Grid.RowDefinitions>
-					<TextBlock x:Name="NoFavoriteBoardTextBox"
+                        <Image Source="/Images/pivotheader.all.png"/>
+                    </Button>
+                </StackPanel>
+            </controls:PivotItem.Header>
+            <Grid>
+                <Grid x:Name="FavoriteBoardGrid">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock x:Name="NoFavoriteBoardTextBox"
 						   Visibility="Collapsed"
 						   Text="收藏为空"
 						   HorizontalAlignment="Center"
 						   VerticalAlignment="Center"
 						   Style="{StaticResource PhoneTextTitle2Style}">
-					</TextBlock>
+                    </TextBlock>
 
-					<toolkit:LongListSelector Name="FavoriteBoardListSelector"
+                    <toolkit:LongListSelector Name="FavoriteBoardListSelector"
 										  Visibility="Visible"
 										  IsFlatList="True"
 										  SelectionChanged="BoardListSelector_SelectionChanged"
 										  Loaded="BoardListSelector_Loaded">
-						<toolkit:LongListSelector.ItemTemplate>
-							<DataTemplate>
-								<Grid Margin="0,6">
-									<toolkit:ContextMenuService.ContextMenu>
-										<toolkit:ContextMenu>
-											<toolkit:MenuItem Header="取消收藏" Click="RemoveFavoriteBoard_Click"/>
-										</toolkit:ContextMenu>
-									</toolkit:ContextMenuService.ContextMenu>
-									<Grid.ColumnDefinitions>
-										<ColumnDefinition Width="*"/>
-										<ColumnDefinition Width="Auto"/>
-									</Grid.ColumnDefinitions>
-									<TextBlock Text="{Binding Text}"
+                        <toolkit:LongListSelector.ItemTemplate>
+                            <DataTemplate>
+                                <Grid Margin="0,6">
+                                    <toolkit:ContextMenuService.ContextMenu>
+                                        <toolkit:ContextMenu>
+                                            <toolkit:MenuItem Header="取消收藏" Click="RemoveFavoriteBoard_Click"/>
+                                        </toolkit:ContextMenu>
+                                    </toolkit:ContextMenuService.ContextMenu>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="{Binding Text}"
 											   FontSize="{StaticResource PhoneFontSizeLarge}"
 											   Style="{StaticResource PhoneTextNormalStyle}"/>
-									<TextBlock Grid.Column="1"
+                                    <TextBlock Grid.Column="1"
 											   Text="{Binding Name}"
 											   VerticalAlignment="Center"
 											   FontSize="{StaticResource PhoneFontSizeMediumLarge}"
 											   Style="{StaticResource PhoneTextAccentStyle}"/>
-								</Grid>
-							</DataTemplate>
-						</toolkit:LongListSelector.ItemTemplate>
-					</toolkit:LongListSelector>
-				</Grid>
-				<toolkit:LongListSelector Name="AllBoardListSelector"
+                                </Grid>
+                            </DataTemplate>
+                        </toolkit:LongListSelector.ItemTemplate>
+                    </toolkit:LongListSelector>
+                </Grid>
+                <toolkit:LongListSelector Name="AllBoardListSelector"
 										  Visibility="Collapsed"
 										  toolkit:TiltEffect.IsTiltEnabled="True"
 										  SelectionChanged="BoardListSelector_SelectionChanged"
 										  Loaded="BoardListSelector_Loaded">
 
-					<toolkit:LongListSelector.GroupItemTemplate>
-						<DataTemplate>
-							<Border Background="{StaticResource PhoneAccentBrush}"
+                    <toolkit:LongListSelector.GroupItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{StaticResource PhoneAccentBrush}"
 									Width="432" Height="62"
 									Margin="6" Padding="12,0,0,6" >
-								<TextBlock Text="{Binding Name}"
+                                <TextBlock Text="{Binding Name}"
 										   Style="{StaticResource PhoneTextLargeStyle}"
 										   HorizontalAlignment="Left" VerticalAlignment="Center"
 										   />
-							</Border>
-						</DataTemplate>
-					</toolkit:LongListSelector.GroupItemTemplate>
+                            </Border>
+                        </DataTemplate>
+                    </toolkit:LongListSelector.GroupItemTemplate>
 
-					<toolkit:LongListSelector.GroupHeaderTemplate>
-						<DataTemplate>
-							<Border Background="{StaticResource PhoneAccentBrush}"
+                    <toolkit:LongListSelector.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <Border Background="{StaticResource PhoneAccentBrush}"
 									Width="432" Height="62"
 									Margin="12,28,0,24" Padding="12,0,0,6"
 									HorizontalAlignment="Left">
-								<TextBlock Text="{Binding Name}"
+                                <TextBlock Text="{Binding Name}"
 										   FontSize="{StaticResource PhoneFontSizeExtraLarge}"
 										   HorizontalAlignment="Left"
 										   VerticalAlignment="Bottom"/>
-							</Border>
-						</DataTemplate>
-					</toolkit:LongListSelector.GroupHeaderTemplate>
-					
-					<toolkit:LongListSelector.ItemTemplate>
-						<DataTemplate>
-							<Grid Margin="0,6">
-								<toolkit:ContextMenuService.ContextMenu>
-									<toolkit:ContextMenu>
-										<toolkit:MenuItem Header="收藏" Click="AddFavoriteBoard_Click"/>
-										<!--<toolkit:MenuItem Header="隐藏" Click="HideBoard_Click"/>-->
-									</toolkit:ContextMenu>
-								</toolkit:ContextMenuService.ContextMenu>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*"/>
-									<ColumnDefinition Width="Auto"/>
-								</Grid.ColumnDefinitions>
-								<TextBlock Text="{Binding Text}"
+                            </Border>
+                        </DataTemplate>
+                    </toolkit:LongListSelector.GroupHeaderTemplate>
+
+                    <toolkit:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="0,6">
+                                <toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenu>
+                                        <toolkit:MenuItem Header="收藏" Click="AddFavoriteBoard_Click"/>
+                                        <!--<toolkit:MenuItem Header="隐藏" Click="HideBoard_Click"/>-->
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Text}"
 										   FontSize="{StaticResource PhoneFontSizeLarge}"
 										   Style="{StaticResource PhoneTextNormalStyle}"/>
-								<TextBlock Grid.Column="1"
+                                <TextBlock Grid.Column="1"
 										   Text="{Binding Name}"
 										   VerticalAlignment="Center"
 										   FontSize="{StaticResource PhoneFontSizeMediumLarge}"
 										   Style="{StaticResource PhoneTextAccentStyle}"/>
-							</Grid>
-						</DataTemplate>
-					</toolkit:LongListSelector.ItemTemplate>
+                            </Grid>
+                        </DataTemplate>
+                    </toolkit:LongListSelector.ItemTemplate>
 
-				</toolkit:LongListSelector>
-			</Grid>
-		</controls:PivotItem>
-		<controls:PivotItem Header="各区热点">
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="*"/>
-				</Grid.RowDefinitions>
-				<TextBlock x:Name="HotErrorTextBox"
+                </toolkit:LongListSelector>
+            </Grid>
+        </controls:PivotItem>
+        <controls:PivotItem Header="各区热点">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="HotErrorTextBox"
 						   Visibility="Collapsed"
 						   Text="出错了，请手动刷新"
 						   HorizontalAlignment="Center"
 						   VerticalAlignment="Center"
 						   Style="{StaticResource PhoneTextTitle2Style}">
-				</TextBlock>
-				<toolkit:LongListSelector Name="HotList"
+                </TextBlock>
+                <toolkit:LongListSelector Name="HotList"
 										  DisplayAllGroups="False"
 										  toolkit:TiltEffect.IsTiltEnabled="True"
 										  Loaded="HotList_Loaded"
 										  SelectionChanged="HotList_SelectionChanged">
-					<toolkit:LongListSelector.GroupItemTemplate>
-						<DataTemplate>
-							<Border Background="{StaticResource PhoneAccentBrush}"
+                    <toolkit:LongListSelector.GroupItemTemplate>
+                        <DataTemplate>
+                            <Border Background="{StaticResource PhoneAccentBrush}"
 									Width="432" Height="62"
 									Margin="6" Padding="12,0,0,6">
-								<TextBlock Text="{Binding GroupName}"
+                                <TextBlock Text="{Binding GroupName}"
 										   Style="{StaticResource PhoneTextLargeStyle}"
 										   HorizontalAlignment="Left" VerticalAlignment="Center"
 										   />
-							</Border>
-						</DataTemplate>
-					</toolkit:LongListSelector.GroupItemTemplate>
+                            </Border>
+                        </DataTemplate>
+                    </toolkit:LongListSelector.GroupItemTemplate>
 
-					<toolkit:LongListSelector.GroupHeaderTemplate>
-						<DataTemplate>
-							<Border Background="{StaticResource PhoneAccentBrush}"
+                    <toolkit:LongListSelector.GroupHeaderTemplate>
+                        <DataTemplate>
+                            <Border Background="{StaticResource PhoneAccentBrush}"
 									Width="432" Height="62"
 									Margin="12,28,0,24" Padding="12,0,0,6"
 									HorizontalAlignment="Left">
-								<TextBlock Text="{Binding GroupName}" 
+                                <TextBlock Text="{Binding GroupName}" 
 										   FontSize="{StaticResource PhoneFontSizeExtraLarge}"
 										   HorizontalAlignment="Left"
 										   VerticalAlignment="Bottom"/>
-							</Border>
-						</DataTemplate>
-					</toolkit:LongListSelector.GroupHeaderTemplate>
+                            </Border>
+                        </DataTemplate>
+                    </toolkit:LongListSelector.GroupHeaderTemplate>
 
-					<toolkit:LongListSelector.ItemTemplate>
-						<DataTemplate>
-							<Grid Margin="12,6">
-								<toolkit:ContextMenuService.ContextMenu>
-									<toolkit:ContextMenu>
-										<toolkit:MenuItem Header="进入版面" Click="GotoBoard_Click"/>
-									</toolkit:ContextMenu>
-								</toolkit:ContextMenuService.ContextMenu>
-								<Grid.ColumnDefinitions>
-									<ColumnDefinition Width="*"/>
-									<ColumnDefinition Width="Auto"/>
-								</Grid.ColumnDefinitions>
-								<TextBlock Text="{Binding Title}"
+                    <toolkit:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <Grid Margin="12,6">
+                                <toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenu>
+                                        <toolkit:MenuItem Header="进入版面" Click="GotoBoard_Click"/>
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="Auto"/>
+                                </Grid.ColumnDefinitions>
+                                <TextBlock Text="{Binding Title}"
 										   TextWrapping="NoWrap"
 										   FontSize="{StaticResource PhoneFontSizeMediumLarge}"/>
-								<TextBlock Grid.Column="1"
+                                <TextBlock Grid.Column="1"
 										   Text="{Binding Board}"
 										   Style="{StaticResource PhoneTextSmallStyle}"
 										   VerticalAlignment="Center"
 										   HorizontalAlignment="Right"/>
-							</Grid>
-						</DataTemplate>
-					</toolkit:LongListSelector.ItemTemplate>
+                            </Grid>
+                        </DataTemplate>
+                    </toolkit:LongListSelector.ItemTemplate>
 
-				</toolkit:LongListSelector>
-			</Grid>
-		</controls:PivotItem>
-		<controls:PivotItem Header="全站十大">
-			<Grid>
-				<Grid.RowDefinitions>
-					<RowDefinition Height="*"/>
-				</Grid.RowDefinitions>
-				<TextBlock x:Name="TopTenErrorTextBox"
+                </toolkit:LongListSelector>
+            </Grid>
+        </controls:PivotItem>
+        <controls:PivotItem Header="全站十大">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="TopTenErrorTextBox"
 						   Visibility="Collapsed"
 						   Text="出错了，请手动刷新"
 						   HorizontalAlignment="Center"
 						   VerticalAlignment="Center"
 						   Style="{StaticResource PhoneTextTitle2Style}">
-				</TextBlock>
-				<toolkit:LongListSelector x:Name="TopTenList"
+                </TextBlock>
+                <toolkit:LongListSelector x:Name="TopTenList"
 									  IsFlatList="True"
 									  toolkit:TiltEffect.IsTiltEnabled="True"
 									  Loaded="TopTenList_Loaded"
 									  SelectionChanged="TopTenList_SelectionChanged">
-					<toolkit:LongListSelector.ItemTemplate>
-						<DataTemplate>
-							<Border BorderBrush="{StaticResource PhoneAccentBrush}"
+                    <toolkit:LongListSelector.ItemTemplate>
+                        <DataTemplate>
+                            <Border BorderBrush="{StaticResource PhoneAccentBrush}"
 								BorderThickness="3,0,0,0"
 								Margin="6" Padding="6,0">
-								<toolkit:ContextMenuService.ContextMenu>
-									<toolkit:ContextMenu>
-										<toolkit:MenuItem Header="进入版面" Click="GotoBoard_Click"/>
-									</toolkit:ContextMenu>
-								</toolkit:ContextMenuService.ContextMenu>
-								<Grid>
-									<Grid.RowDefinitions>
-										<RowDefinition Height="*"/>
-										<RowDefinition Height="Auto"/>
-									</Grid.RowDefinitions>
-									<TextBlock Text="{Binding Title}"
+                                <toolkit:ContextMenuService.ContextMenu>
+                                    <toolkit:ContextMenu>
+                                        <toolkit:MenuItem Header="进入版面" Click="GotoBoard_Click"/>
+                                    </toolkit:ContextMenu>
+                                </toolkit:ContextMenuService.ContextMenu>
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="*"/>
+                                        <RowDefinition Height="Auto"/>
+                                    </Grid.RowDefinitions>
+                                    <TextBlock Text="{Binding Title}"
 										   TextWrapping="Wrap"
 										   FontSize="{StaticResource PhoneFontSizeMediumLarge}"
 										   Margin="0,0,3,0"/>
-									<Grid Grid.Row="1">
-										<Grid.ColumnDefinitions>
-											<ColumnDefinition Width="*"/>
-											<ColumnDefinition Width="Auto"/>
-										</Grid.ColumnDefinitions>
-										<TextBlock Text="{Binding Author}"
+                                    <Grid Grid.Row="1">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*"/>
+                                            <ColumnDefinition Width="Auto"/>
+                                        </Grid.ColumnDefinitions>
+                                        <TextBlock Text="{Binding Author}"
 											   Style="{StaticResource PhoneTextSmallStyle}"
 											   Foreground="{StaticResource PhoneAccentBrush}"
 											   Margin="0"/>
-										<TextBlock Grid.Column="1"
+                                        <TextBlock Grid.Column="1"
 											   Text="{Binding Board}"
 											   Style="{StaticResource PhoneTextSmallStyle}"
 											   HorizontalAlignment="Right"/>
-									</Grid>
-								</Grid>
-							</Border>
-						</DataTemplate>
-					</toolkit:LongListSelector.ItemTemplate>
-				</toolkit:LongListSelector>
-			</Grid>
-		</controls:PivotItem>
+                                    </Grid>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </toolkit:LongListSelector.ItemTemplate>
+                </toolkit:LongListSelector>
+            </Grid>
+        </controls:PivotItem>
 
-	</controls:Pivot>
+        <controls:PivotItem Header="讨论区搜索">
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="80"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="320"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+                <toolkit:AutoCompleteBox x:Name="SearchTextBox" Grid.Row="0"
+                    HorizontalAlignment="Left" Grid.Column="0"  
+                    VerticalAlignment="Top"  Width="320" >
+                </toolkit:AutoCompleteBox>
+                <Button x:Name="SearchBoardButton" Grid.Row="0"
+                    Content="进入" Grid.Column="1" Width="120"
+                    HorizontalAlignment="Left" VerticalAlignment="Top" Click="SearchBoardButton_Click"/>
+            </Grid>
+        </controls:PivotItem>
 
-	<phone:PhoneApplicationPage.ApplicationBar>
-		<!-- Set Mode to "Minimized" will make it hard to see the last TopTen row. -->
-		<shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Mode="Default" Opacity="1">
-			<shell:ApplicationBar.MenuItems>
-				<shell:ApplicationBarMenuItem x:Name="SettingsButton"
+    </controls:Pivot>
+
+    <phone:PhoneApplicationPage.ApplicationBar>
+        <!-- Set Mode to "Minimized" will make it hard to see the last TopTen row. -->
+        <shell:ApplicationBar IsVisible="True" IsMenuEnabled="True" Mode="Default" Opacity="1">
+            <shell:ApplicationBar.MenuItems>
+                <shell:ApplicationBarMenuItem x:Name="SettingsButton"
 											  Text="设置"
 											  Click="SettingsButton_Click"/>
-			</shell:ApplicationBar.MenuItems>
-		</shell:ApplicationBar>
-	</phone:PhoneApplicationPage.ApplicationBar>
+            </shell:ApplicationBar.MenuItems>
+        </shell:ApplicationBar>
+    </phone:PhoneApplicationPage.ApplicationBar>
 </phone:PhoneApplicationPage>

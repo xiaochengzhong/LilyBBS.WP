@@ -47,6 +47,11 @@ namespace LilyBBS
 			Message = "无法正确显示内容";
 			Show();
 		}
+        public void ShowInputBoardError()
+        {
+            Message = "无效的讨论区！";
+            Show();
+        }
 	}
 
 	public class NetworkErrorMessage
