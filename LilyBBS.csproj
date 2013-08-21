@@ -49,21 +49,25 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Coding4Fun.Phone.Controls">
-      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Libraries\Coding4Fun\Coding4Fun.Phone.Controls.dll</HintPath>
+      <HintPath>References\Coding4Fun.Phone.Controls.dll</HintPath>
     </Reference>
     <Reference Include="HtmlAgilityPack">
-      <HintPath>..\packages\HtmlAgilityPack.1.4.3\lib\sl4-windowsphone71\HtmlAgilityPack.dll</HintPath>
+      <HintPath>References\HtmlAgilityPack.dll</HintPath>
     </Reference>
-    <Reference Include="ImageTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL" />
+    <Reference Include="ImageTools, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>References\ImageTools.dll</HintPath>
+    </Reference>
     <Reference Include="ImageTools.Controls">
-      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Libraries\ImageTools\bin\Phone\ImageTools.Controls.dll</HintPath>
+      <HintPath>References\ImageTools.Controls.dll</HintPath>
     </Reference>
     <Reference Include="ImageTools.IO.Gif">
-      <HintPath>C:\Program Files (x86)\Microsoft SDKs\Windows Phone\v7.1\Libraries\ImageTools\bin\Phone\ImageTools.IO.Gif.dll</HintPath>
+      <HintPath>References\ImageTools.IO.Gif.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e" />
-    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604" />
+    <Reference Include="Microsoft.Phone.Controls.Toolkit, Version=7.0.0.0, Culture=neutral, PublicKeyToken=b772ad94eb9ca604">
+      <HintPath>References\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
     <Reference Include="System.Windows" />
     <Reference Include="system" />
@@ -94,6 +98,7 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
     </Compile>
+    <Compile Include="GB2312Encoding.cs" />
     <Compile Include="UserControls\PostControl.xaml.cs">
       <DependentUpon>PostControl.xaml</DependentUpon>
     </Compile>
@@ -176,12 +181,11 @@
     <Content Include="SplashScreenImage.jpg" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GB2312\GB2312.csproj">
-      <Project>{771FA000-73DC-48DA-A16E-4D1C31322997}</Project>
-      <Name>GB2312</Name>
-    </ProjectReference>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <EmbeddedResource Include="gb2312.bin" />
+  </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.$(TargetFrameworkProfile).Overrides.targets" />
   <Import Project="$(MSBuildExtensionsPath)\Microsoft\Silverlight for Phone\$(TargetFrameworkVersion)\Microsoft.Silverlight.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

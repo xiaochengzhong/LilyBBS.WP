@@ -205,6 +205,7 @@ namespace LilyBBS
 			{
 				LilyToast toast = new LilyToast();
 				toast.ShowContentError();
+                throw exc;
 			}
 		}
 		#endregion

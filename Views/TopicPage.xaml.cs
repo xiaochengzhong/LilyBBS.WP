@@ -95,7 +95,7 @@ namespace LilyBBS
 			}
 			catch (Exception exc)
 			{
-				
+                throw exc;
 			}
 		}
 

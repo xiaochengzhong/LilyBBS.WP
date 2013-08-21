@@ -216,7 +216,7 @@ namespace LilyBBS
 	{
 		public object Convert(object value, Type targetType, object parameter, CultureInfo culture)
 		{
-			return true;
+			// return true;
 			// TODO
 			bool isLoading = (value as bool?).Value;
 			if (isLoading) return false;
