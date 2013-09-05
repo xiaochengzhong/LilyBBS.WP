@@ -60,8 +60,17 @@
     <Reference Include="ImageTools.Controls">
       <HintPath>References\ImageTools.Controls.dll</HintPath>
     </Reference>
+    <Reference Include="ImageTools.IO.Bmp">
+      <HintPath>References\ImageTools.IO.Bmp.dll</HintPath>
+    </Reference>
     <Reference Include="ImageTools.IO.Gif">
       <HintPath>References\ImageTools.IO.Gif.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.IO.Png">
+      <HintPath>References\ImageTools.IO.Png.dll</HintPath>
+    </Reference>
+    <Reference Include="ImageTools.Utils">
+      <HintPath>References\ImageTools.Utils.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone" />
     <Reference Include="Microsoft.Phone.Controls, Version=7.0.0.0, Culture=neutral, PublicKeyToken=24eec0d8c86cda1e" />
@@ -69,6 +78,9 @@
       <HintPath>References\Microsoft.Phone.Controls.Toolkit.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.Phone.Interop" />
+    <Reference Include="PhoneCodeContractsAssemblies">
+      <HintPath>References\PhoneCodeContractsAssemblies.dll</HintPath>
+    </Reference>
     <Reference Include="System.Windows" />
     <Reference Include="system" />
     <Reference Include="System.Core" />
